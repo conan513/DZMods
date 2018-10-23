@@ -1,4 +1,3 @@
-
 	ref map<string, string>	m_AdminList = new map<string, string>; //UID, name
 	ref map<string, vector>	m_TPLocations = new map<string, vector>; //name of town, pos
 	
@@ -86,6 +85,22 @@
 
         return tmp_pos;
     }
+	
+	void HideMessages()
+	{
+		array<Man> players = new array<Man>;
+		GetGame().GetPlayers( players );
+		
+		for (int meme = 0; meme < players.Count(); ++meme)
+		{
+			PlayerBase memes = players.Get(meme);
+			for (int nn = 0; nn < 8; ++nn)
+				{
+					Msgparam = new Param1<string>( "  " );
+					GetGame().RPCSingleParam(memes, ERPCs.RPC_USER_ACTION_MESSAGE, Msgparam, true, memes.GetIdentity());
+				}
+		}
+	}
 
 	//---------------------------------------------------------------------------------
 	override void OnEvent(EventType eventTypeId, Param params) 
@@ -112,15 +127,7 @@
 					Param1<string> Msgparam;
 					if (chat_params.param3.Contains("/"))
 					{
-					     for (int meme = 0; meme < players.Count(); ++meme)
-						{
-							PlayerBase memes = players.Get(meme);
-							for (int nn = 0; nn < 8; ++nn)
-							{
-							 Msgparam = new Param1<string>( "  " );
-					                 GetGame().RPCSingleParam(memes, ERPCs.RPC_USER_ACTION_MESSAGE, Msgparam, true, memes.GetIdentity());
-							}
-						}
+					   HideMessages();
 					}
 
 					if (chat_params.param1 == 0 && chat_params.param2 != "") { //trigger only when channel is Global == 0 and Player Name does not equal to null
