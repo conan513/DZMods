@@ -96,6 +96,7 @@
 			PlayerBase memes = players.Get(meme);
 			for (int nn = 0; nn < 8; ++nn)
 				{
+					Param1<string> Msgparam;
 					Msgparam = new Param1<string>( "  " );
 					GetGame().RPCSingleParam(memes, ERPCs.RPC_USER_ACTION_MESSAGE, Msgparam, true, memes.GetIdentity());
 				}
