@@ -270,7 +270,7 @@
 					                }
 									
 								//Less Cluttred Only Simple commands with the switch case are in 'AdminToolExtended.c'
-								#include "$CurrentDir:\\mpmissions\\DayZSurvival.chernarusplus\\AdminToolExtended.c"
+								#include "$CurrentDir:\\mpmissions\\dayzOffline.chernarusplus\\AdminToolExtended.c"
 						}
 	                }
 	            }
