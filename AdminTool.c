@@ -109,7 +109,7 @@
 
 					PlayerBase selectedPlayer;
 					PlayerIdentity selectedIdentity;
-				
+					Param1<string> Msgparam;
 					if (chat_params.param3.Contains("/"))
 					{
 					     for (int meme = 0; meme < players.Count(); ++meme)
@@ -123,7 +123,6 @@
 						}
 					}
 
-					Param1<string> Msgparam;
 					if (chat_params.param1 == 0 && chat_params.param2 != "") { //trigger only when channel is Global == 0 and Player Name does not equal to null
 
 	                for ( int i = 0; i < players.Count(); ++i )
