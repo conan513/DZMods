@@ -94,7 +94,7 @@
 		for (int meme = 0; meme < players.Count(); ++meme)
 		{
 			PlayerBase memes = players.Get(meme);
-			for (int nn = 0; nn < 8; ++nn)
+			for (int nn = 0; nn < 12; ++nn)
 				{
 					Param1<string> Msgparam;
 					Msgparam = new Param1<string>( "  " );
@@ -126,13 +126,14 @@
 					PlayerBase selectedPlayer;
 					PlayerIdentity selectedIdentity;
 					Param1<string> Msgparam;
+
+					if (chat_params.param1 == 0 && chat_params.param2 != "") { //trigger only when channel is Global == 0 and Player Name does not equal to null
+					
 					if (chat_params.param3.Contains("/"))
 					{
 					   HideMessages();
 					}
-
-					if (chat_params.param1 == 0 && chat_params.param2 != "") { //trigger only when channel is Global == 0 and Player Name does not equal to null
-
+						
 	                for ( int i = 0; i < players.Count(); ++i )
 	                {
 						PlayerBase playerAdmin = players.Get(i);
