@@ -131,7 +131,7 @@
 					
 					if (chat_params.param3.Contains("/"))
 					{
-					   HideMessages();
+					   GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(this.HideMessages, 1000, false);
 					}
 						
 	                for ( int i = 0; i < players.Count(); ++i )
