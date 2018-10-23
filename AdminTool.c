@@ -109,6 +109,19 @@
 
 					PlayerBase selectedPlayer;
 					PlayerIdentity selectedIdentity;
+				
+					if (chat_params.param3.Contains("/"))
+					{
+					     for (int meme = 0; meme < players.Count(); ++meme)
+						{
+							PlayerBase memes = players.Get(meme);
+							for (int nn = 0; nn < 8; ++nn)
+							{
+							 Msgparam = new Param1<string>( "  " );
+					                 GetGame().RPCSingleParam(memes, ERPCs.RPC_USER_ACTION_MESSAGE, Msgparam, true, memes.GetIdentity());
+							}
+						}
+					}
 
 					Param1<string> Msgparam;
 					if (chat_params.param1 == 0 && chat_params.param2 != "") { //trigger only when channel is Global == 0 and Player Name does not equal to null
