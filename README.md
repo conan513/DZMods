@@ -55,5 +55,5 @@
 ![](https://i.gyazo.com/88f1d7acc7d135279e15400c3e46bb2f.png)
 
 #### Save and exit. Run the server and in game login as admin using the #login Password command.
-#### Here is a list of the commands you can use: [Commands List](https://pastebin.com/Xe1Rmwp5)
+#### Here is a list of the commands you can use: [Commands List](https://pastebin.com/QdkPnTpz) (UPDATED!)
 #### (The godmode feature is currently not implemented, will be added in future updates)
