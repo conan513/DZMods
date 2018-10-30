@@ -119,14 +119,12 @@
 				{
 					if (memes.GetIdentity() != playerAdmin.GetIdentity())
 					{
-						Print("HidingMSG");
 						Param1<string> Msgparam;
 						Msgparam = new Param1<string>( "  " );
 						GetGame().RPCSingleParam(memes, ERPCs.RPC_USER_ACTION_MESSAGE, Msgparam, true, memes.GetIdentity());
 					}
 				}
 			}
-			Print("HidingMSG______");
 		}
 	}
 
