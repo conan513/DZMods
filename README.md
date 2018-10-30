@@ -44,9 +44,7 @@
    
 
     string m_AdminListPath = "$CurrentDir:\\mpmissions\\dayzOffline.chernarusplus\\";
-#### - Save and exit out of `init.c` , open up the file `AdminTool.c` and scroll down to `LINE: 260`
-![](https://i.gyazo.com/a1b0b333ba1f7b273c7b7cf3d66de66b.png)
-#### Make sure the path is correct according to where mission is.
+#### - Save and exit out of `init.c`
 
 #### - Create a new text file in your mission folder (default: dayzOffline.chernarusplus). Name it: `Admins.txt`Open it and add the steam 64 ID's of your admins. You can obtain the 64 ID using: [Steam IO](https://steamid.io/)
 
