@@ -89,11 +89,7 @@
 
 		vector NewPosition;
 		vector OldPosition;
-
-		string texture_path = "DZ\\data\\data\\flag_usa_co.paa";
-		//string mat_path     = "DZ\\data\\data\\blesk2.rvmat"; //bright white
-		//string mat_path     = "DZ\\data\\data\\laser.rvmat";  //Ghost skin
-		string mat_path     = "DZ\\data\\data\\mirror.rvmat";
+		
 		if (ground)
 		{
 			OldPosition = player.GetPosition();
@@ -103,15 +99,6 @@
 			NewPosition[2] = OldPosition[2] + 1.5;
 
 			item = GetGame().CreateObject( ClassName, NewPosition, false, true );
-
-			//item.SetObjectTexture( 0, texture_path );
-			//item.SetObjectTexture( 1, texture_path );
-			//item.SetObjectTexture( 2, texture_path );
-
-			item.SetObjectMaterial( 0, mat_path );
-			item.SetObjectMaterial( 1, mat_path );
-			item.SetObjectMaterial( 2, mat_path );
-
 		}else{
 
 			item = player.GetInventory().CreateInInventory( ClassName );
