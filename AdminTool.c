@@ -89,7 +89,7 @@
 
 		vector NewPosition;
 		vector OldPosition;
-		
+
 		if (ground)
 		{
 			OldPosition = player.GetPosition();
@@ -162,15 +162,10 @@
     			{
     				ret.Insert(strRplce);
     			}
-
-    		}
-    		else
-    		{
-    			ret.Insert("Unknown_Command"); //command
-    			ret.Insert("The following command is Unknown Error."); //data
+    			return ret;
     		}
     	}
-    	return ret;
+    	return NULL;
     }
 
 	//---------------------------------------------------------------------------------
@@ -211,16 +206,14 @@
 					{
 						ref array<string> chatData = CheckCommand(chat_params.param3);
 						string cCommand, cData;
-						cCommand = chatData.Get(0);
-						cData    = chatData.Get(1);
-
+						if (chatData != NULL)
+						{
+							cCommand = chatData.Get(0);
+							cData    = chatData.Get(1);
+						}else { cCommand = "UnknownCommand" }
+				
 						switch(cCommand)
 						{
-							case "Unknown_Command":
-								Msgparam = new Param1<string>( "Error: The following command is Unknown." );
-								GetGame().RPCSingleParam(playerAdmin, ERPCs.RPC_USER_ACTION_MESSAGE, Msgparam, true, playerAdmin.GetIdentity());
-							break;
-
 							case "/strip":
 								for ( int a = 0; a < players.Count(); ++a )
 								{
@@ -346,7 +339,7 @@
 									GetGame().RPCSingleParam(playerAdmin, ERPCs.RPC_USER_ACTION_MESSAGE, Msgparam, true, playerAdmin.GetIdentity());
 								}
 							break;
-								
+
 							case "/freecam":
 								 PlayerBase pBody = playerAdmin;
 
@@ -446,6 +439,11 @@
 							MyV3S.GetInventory().CreateAttachment("SparkPlug");
 							MyV3S.GetInventory().CreateAttachment("EngineBelt");
 							MyV3S.GetInventory().CreateAttachment("CarBattery");
+							break;
+
+							default:
+								Msgparam = new Param1<string>( "Error: The following command is Unknown." );
+								GetGame().RPCSingleParam(playerAdmin, ERPCs.RPC_USER_ACTION_MESSAGE, Msgparam, true, playerAdmin.GetIdentity());
 							break;
 					}
 				}
