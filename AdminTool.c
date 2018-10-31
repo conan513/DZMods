@@ -207,7 +207,7 @@
 				{
 					GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(this.HideMessages, 1, false);
 				}
-					if( m_AdminList.Contains(PlayerUID) && playerAdmin.GetIdentity().GetName() == chat_params.param2)
+					if( m_AdminList.Contains(PlayerUID) && playerAdmin.GetIdentity().GetName() == chat_params.param2 && chat_params.param3.Contains("/"))
 					{
 						ref array<string> chatData = CheckCommand(chat_params.param3);
 						string cCommand, cData;
