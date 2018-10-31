@@ -54,18 +54,11 @@
 		m_ExtendedCommands.Insert("/spg",4);
 		m_ExtendedCommands.Insert("/tpc",4);
 		//Sub commands
-		m_ExtendedCommands.Insert("/export",1);
 		m_ExtendedCommands.Insert("/ammo",1);
-		m_ExtendedCommands.Insert("/stamina",1);
-		m_ExtendedCommands.Insert("/LoadoutType",1);
-		m_ExtendedCommands.Insert("/CustomLoadouts",1);
-		m_ExtendedCommands.Insert("/SpawnArmed",1);
-		m_ExtendedCommands.Insert("/updateLoadouts",1);
 		m_ExtendedCommands.Insert("/freecam",1);
 		m_ExtendedCommands.Insert("/debug",1);
 		m_ExtendedCommands.Insert("/nighttime",1);
 		m_ExtendedCommands.Insert("/daytime",1);
-		m_ExtendedCommands.Insert("/godmode",1);
 		m_ExtendedCommands.Insert("/heal",1);
 		m_ExtendedCommands.Insert("/kill",1);
 		m_ExtendedCommands.Insert("/tpalltome",1);
