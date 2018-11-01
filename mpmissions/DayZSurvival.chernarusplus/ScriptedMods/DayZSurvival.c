@@ -196,7 +196,14 @@ class DayZSurvival : MissionServer
 		GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(this.PlayerCounter, 110000, true);  //Default 120000 2 mins Looped
 		GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(this.CustomMOTD, TIME_INTERVAL, true);  //Default 120000 2 mins Looped
 		//----------------------------------
-		AdminTool(); //Call for admin tool scripts
+		//Call for admin tool scripts
+		AdminTool(); 
+
+		// load debug monitor all players
+		if(m_debugmonitor)
+		{
+			loadDebug();
+		}
 		if (m_SessionFeed) { g_Game.SetProfileString("SessionFeed", "true"); } else { g_Game.SetProfileString("SessionFeed", "false"); }
 		if (m_CustomBuildings) { BuildingSpawner(); } //Spawn for custom buildings
 		if (m_ZedHordes) { ZmbEvents = new InfectedHordes(); }

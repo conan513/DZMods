@@ -73,6 +73,14 @@
 		m_ExtendedCommands.Insert("/spawncar",1);
 	}
 
+	void loadDebug()
+	{
+		Msgparam = new Param1<string>( "DeBug Monitor (Status Monitor) Enabled!" );
+		GetGame().RPCSingleParam(playerAdmin, ERPCs.RPC_USER_ACTION_MESSAGE, Msgparam, true, playerAdmin.GetIdentity());
+		GetGame().SetDebugMonitorEnabled(1);
+		m_IsDebugRunning = true;
+	}
+
 	int TeleportAllPlayersTo(PlayerBase PlayerAdmin)
 	{
 		array<Man> players = new array<Man>;
