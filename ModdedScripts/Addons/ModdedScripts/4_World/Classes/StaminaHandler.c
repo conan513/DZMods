@@ -13,7 +13,15 @@ modded class StaminaHandler
 		//! stamina modifiers registration
 		m_StaminaModifiers = new StaminaModifiers;
 		m_StaminaModifiers.RegisterFixed(EStaminaModifiers.HOLD_BREATH, STAMINA_DRAIN_HOLD_BREATH);
-		m_StaminaModifiers.RegisterFixed(EStaminaModifiers.JUMP, 0);
+        //---Stamina on/off---
+        if(m_NoStamina)
+        {
+		  m_StaminaModifiers.RegisterFixed(EStaminaModifiers.JUMP, 0);
+        }
+        else
+        {
+            m_StaminaModifiers.RegisterFixed(EStaminaModifiers.JUMP, STAMINA_DRAIN_JUMP);
+        }
 		m_StaminaModifiers.RegisterRandomized(EStaminaModifiers.MELEE_LIGHT, 1, STAMINA_DRAIN_MELEE_LIGHT);
 		m_StaminaModifiers.RegisterRandomized(EStaminaModifiers.MELEE_HEAVY, STAMINA_DRAIN_MELEE_LIGHT, STAMINA_DRAIN_MELEE_HEAVY);
 		m_StaminaModifiers.RegisterRandomized(EStaminaModifiers.MELEE_EVADE, 3, STAMINA_DRAIN_MELEE_EVADE);
@@ -52,13 +60,27 @@ modded class StaminaHandler
                 case DayZPlayerConstants.MOVEMENTIDX_SPRINT: //sprint
                     if ( m_PlayerStance == DayZPlayerConstants.STANCEIDX_ERECT )
                     {
-                        m_StaminaDelta = 0;
+                        if(m_NoStamina)
+                        {
+                            m_StaminaDelta = 0;
+                        }
+                        else
+                        {
+                            m_StaminaDelta = -STAMINA_DRAIN_STANDING_SPRINT_PER_SEC;
+                        }
                         SetCooldown(STAMINA_REGEN_COOLDOWN_DEPLETION);
                         break;
                     }
                     if ( m_PlayerStance == DayZPlayerConstants.STANCEIDX_CROUCH)
                     {
-                        m_StaminaDelta = 0;
+                        if(m_NoStamina)
+                        {
+                            m_StaminaDelta = 0;
+                        }
+                        else
+                        {
+                            m_StaminaDelta = -STAMINA_DRAIN_CROUCHED_SPRINT_PER_SEC;
+                        }
                         SetCooldown(STAMINA_REGEN_COOLDOWN_DEPLETION);
                         break;
                     }
