@@ -405,7 +405,7 @@
 								 if (m_SpawnArmed)
 								    {
 										m_SpawnArmed = false;
-										Msgparam = new Param1<string>( "New Spawn Players will NOLONGER Spawn with a GUN!" );
+										Msgparam = new Param1<string>( "New Spawn Players will NO LONGER Spawn with a GUN!" );
 										GetGame().RPCSingleParam(playerAdmin, ERPCs.RPC_USER_ACTION_MESSAGE, Msgparam, true, playerAdmin.GetIdentity());
 									} else {
 										m_SpawnArmed = true;
