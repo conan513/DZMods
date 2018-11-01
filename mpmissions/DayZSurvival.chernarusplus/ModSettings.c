@@ -22,3 +22,4 @@ m_AdminListPath      = "$CurrentDir:\\mpmissions\\DayZSurvival.chernarusplus\\Sc
 m_NoThirst			= false; //Set true to disable thirst
 m_NoHunger			= false; //Set true to disable hunger
 m_NoStamina			= false; //Set true to disable stamina
+m_debugmonitor		= true; //Enable Debug monitor for normal players
