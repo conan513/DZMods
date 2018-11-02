@@ -4,6 +4,8 @@ modded class ZombieBase
 	private PlayerBase lastHitSource;
 	private int lootDropChance;
 	bool m_walkingZeds;
+	//fix priv var crash
+	private int m_LastMindState2 = -1;
 
 	ref TStringArray m_PossibleLootDrops,m_PossibleWeaponDrops;
 
@@ -81,14 +83,14 @@ modded class ZombieBase
 	//-------------------------------------------------------------
 	//						Mindstate
 	//-------------------------------------------------------------
-	Override bool HandleMindStateChange(int pCurrentCommandID, DayZInfectedInputController pInputController, float pDt)
+	override bool HandleMindStateChange(int pCurrentCommandID, DayZInfectedInputController pInputController, float pDt)
 	{
 		DayZInfectedCommandMove moveCommand = GetCommand_Move();
 		if( moveCommand && moveCommand.IsTurning() )
 			return false;
 		
 		int mindState = pInputController.GetMindState();
-		if( m_LastMindState != mindState )
+		if( m_LastMindState2 != mindState )
 		{
 			switch( mindState )
 			{
@@ -105,7 +107,7 @@ modded class ZombieBase
 			case DayZInfectedConstants.MINDSTATE_CHASE:
 				if(m_walkingZeds)
 				{
-					if( moveCommand && (m_LastMindState < DayZInfectedConstants.MINDSTATE_CHASE) )
+					if( moveCommand && (m_LastMindState2 < DayZInfectedConstants.MINDSTATE_CHASE) )
 					moveCommand.SetIdleState(2);
 				break;
 				}
@@ -117,7 +119,7 @@ modded class ZombieBase
 				}
 			}
 			
-			m_LastMindState = mindState;
+			m_LastMindState2 = mindState;
 			m_AttackCooldownTime = 0.0;
 		}
 		return false;
