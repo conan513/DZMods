@@ -204,7 +204,7 @@ class DayZSurvival : MissionServer
 		//Call for admin tool scripts
 		AdminTool(); 
 
-		// load debug monitor all players
+		// Debug monitor
 		if(m_debugmonitor)
 		{
 			loadDebug();
