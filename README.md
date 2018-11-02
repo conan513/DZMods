@@ -6,12 +6,12 @@
 
 
 # ----INSTALL GUIDE---- #
-## copy mpmissions and ModdedScripts to your DayZServer folder
-## edit your serverDZ.cfg
-## change template="DayZoffline.chernarusplus";
-## to template="DayZSurvival.chernarusplus";
-## add to your start up bat/script
-## -mod=ModdedScripts
+#### copy mpmissions and ModdedScripts to your DayZServer folder
+#### edit your serverDZ.cfg
+#### change template="DayZoffline.chernarusplus";
+#### to template="DayZSurvival.chernarusplus";
+#### add to your start up bat/script
+#### -mod=ModdedScripts
 
 # ----Features---- 
 
@@ -87,7 +87,7 @@
 ## Script/Addon Credits
 Below is a list of scripts/codebases/githubs/etc used to make this repack, credits are added if available for each script repack
 
-#### Original Custom Mission (and base for repack)
+### Original Custom Mission (and base for repack)
 ##### Created: DaOne
 ##### Twitter: @DuhOneZ
 ##### YouTube: https://www.youtube.com/channel/UCfTYjQEiTvJcUz-HAtg8rUQ
@@ -95,11 +95,11 @@ Below is a list of scripts/codebases/githubs/etc used to make this repack, credi
 ##### Credits: 
 ##### Sen(zalexki)KillScore system https://github.com/zalexki?
 
-####DayZ-BlackRavenDM
+### DayZ-BlackRavenDM
 ##### Created: zalexki
 ##### GitHUB: https://github.com/zalexki/DayZ-BlackRavenDM?
 
-####Arkensor/DayZCommunityOfflineMode
+### Arkensor/DayZCommunityOfflineMode
 ##### Created: Arkensor
 ##### GitHUB: https://github.com/Arkensor/DayZCommunityOfflineMode
 ##### Credits:
@@ -111,7 +111,7 @@ Below is a list of scripts/codebases/githubs/etc used to make this repack, credi
 ##### wriley - Code snippets beards
 ##### Jacob_Mango - Added key to toggle "Aimgate"
 
-####Airdrop
+### Airdrop
 ##### Created: mov3ax
 ##### GitHUB: https://github.com/mov3ax/airdrop#setup
 ##### Credits:
@@ -121,7 +121,7 @@ Below is a list of scripts/codebases/githubs/etc used to make this repack, credi
 ##### Revelin - Code snippets?
 
 
-### Known Issues:
+## Known Issues:
 -New Loadout feature does not attach secondary weapon attachmnets (pistol/weapon that is placed within an inventory container).
 -SafeZone Godmode is not really godmode thats because the damage fucntions are hard-codded into the game engine.
 
