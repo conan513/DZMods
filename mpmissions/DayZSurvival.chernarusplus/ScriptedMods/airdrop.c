@@ -25,8 +25,8 @@ class AirDrop
 	bool PrintInformationCoordinates = true; // Show in chat coordinates where airdrop is landed
 	// 36000 Seconds = 1 Hour
 	float RemoveTime = 36000 / TimesliceMultiplyier; // After how much time airplane and loot will be removed and new airplane will be spawned
-	bool SpawnZombie = true; // Spawn zombie near airdrop when landed
-	bool ShowSignal = true; // Show smoke signal when airdrop landed
+	bool SpawnZombie;// Spawn zombie near airdrop when landed
+	bool ShowSignal;// Show smoke signal when airdrop landed
 	float RandomBoundsMin = 95; // Airdrop drop bounds min
 	float RandomBoundsMax = 180; // Airdrop drop bounds max
 	bool PrintDebugMessages = false; // Show debug messages (Debug)
