@@ -1,5 +1,6 @@
 class DayZSurvival : MissionServer
 {
+	ref AirDrop AirDropClass; // Class definition
 	bool m_debugmonitor;
 	//new vars
 	bool m_Debugmode;
@@ -7,6 +8,7 @@ class DayZSurvival : MissionServer
 	bool m_NoHunger;
 	bool m_NoStamina;
 	bool m_walkingZeds;
+	bool EnableAirdrops;
 	
 	// Called within class as extentions NOT class mainscope DO NOT DEFINE CLASS IN FILE! 
 	#include "$CurrentDir:\\mpmissions\\DayZSurvival.chernarusplus\\ScriptedMods\\BuildingSpawner.c"
@@ -48,9 +50,27 @@ class DayZSurvival : MissionServer
 	bool m_SessionFeed;
 	bool m_ZedHordes;
 	bool m_ProxyExportMode;
-
 	float m_LogInTimerLength;
+	float TimerSlice; // Timeslice
+	
+	void DayZSurvival()
+	{
+		AirDropClass = new AirDrop;
+	}
+	
+	override void OnUpdate( float timeslice )
+	{
+		super.OnUpdate( timeslice );
 
+		// FPS Fix
+		TimerSlice += timeslice;
+		if (TimerSlice >= AirDropClass.TimesliceMultiplyier)
+		{
+			AirDropClass.CreateAirDrop();
+			TimerSlice = 0;	
+		}
+	}
+	
 	override void OnPreloadEvent(PlayerIdentity identity, out bool useDB, out vector pos, out float yaw, out int queueTime)
 	{
 		if (GetHive())

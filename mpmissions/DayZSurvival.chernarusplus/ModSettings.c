@@ -10,6 +10,9 @@ m_SafeZone				= true;  //set true to Enable Safe Zone
 m_CustomBuildings		= true;  //Spawns the buildings you add in file BuildingSpawner.c
 m_debugmonitor			= true; //Enable Debug monitor for normal players
 
+//Airdrops
+EnableAirdrops 			= true; //Airdrops randomly across map
+
 //Zeds
 m_ZedHordes				= true;  //Random zombie hordes that spawn on the map (The tunables for this mod can be found in 'InfectedHordes.c')
 m_walkingZeds			= true; //no running zombies :)

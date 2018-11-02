@@ -1,6 +1,7 @@
 //Keep the goddamn init clean please!
 #include "$CurrentDir:\\mpmissions\\DayZSurvival.chernarusplus\\ScriptedMods\\DayZSurvival.c"
 #include "$CurrentDir:\\mpmissions\\DayZSurvival.chernarusplus\\ScriptedMods\\InfectedHordes.c"
+#include "$CurrentDir:\\mpmissions\\DayZSurvival.chernarusplus\\ScriptedMods\\AirDrop.c
 
 Mission CreateCustomMission(string path)
 {
