@@ -15,7 +15,7 @@ class AirDrop
 	/* ### ### ### ### ### ### ### ### */
 	/* Configuration of plugin */
 	/* ### ### ### ### ### ### ### ### */
-
+	bool EnableAirdrops;
 	float TimesliceMultiplyier = 0.01; // Timeslice multiplyier, default value is 0.01 (60 FPS)
 	float AirPlaneSpeed = 0.25; // Airplane fly speed 
 	float AirPlaneHeight = 500; // Airplane fly height 
