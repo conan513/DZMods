@@ -14,6 +14,7 @@ modded class StaminaHandler
 		m_StaminaModifiers = new StaminaModifiers;
 		m_StaminaModifiers.RegisterFixed(EStaminaModifiers.HOLD_BREATH, STAMINA_DRAIN_HOLD_BREATH);
         //---Stamina on/off---
+		bool m_NoStamina;
         if(m_NoStamina)
         {
 		  m_StaminaModifiers.RegisterFixed(EStaminaModifiers.JUMP, 0);
