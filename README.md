@@ -1,53 +1,22 @@
 
-# DayZ Vanilla++ Mission by DaOne v0.2
+# DayZ SA Repack 0.1 - Go Away Sheep (GAS) By Falling sheep#
+
+current Build: 70
+
 #### CREDITS: @Sen (@zalexki zalexki ) from DayZModders Discord Server for the KillScore system https://github.com/zalexki
 #### NOTE: DO NOT sign the mod ModdedScripts, if you do then verifySignature would not work!!
 
-##### UPDATE  31/11/2018
-### ChangeLog:
-####  New Features/Changes to existing features:
-#### -Removed the use of command lines as keys to disable and enable mods due to complications with third party hosting services
-#### -Added 'ModSettings.c' that handles all the mod options. Enabling/Disabling features are all now manipulated via this file.
-#### -Added the ability to generate and save static loadouts.
- >Usage: As an admin use the command /export and the gear that is currently on your player will be saved and can be utilized as a loadout-on-spawn if you enable 'm_CustomLoadouts' & 'm_StaticLoadouts' make sure to disable 'm_RandomizedLoadouts'
- -Added Customizable Infected randomized server events. ( check InfectedHordes.c For more info )
- -AdminTool: Added a new command  /LoadoutType used to switch from using static loadouts to randomized. Works only if custom loadouts is enabled in ModSettings.c
-  
-  
-#### BugFixes:
--Fixed a bug with the AdminTool printing error messages in crash.log and scripts.log due to shitty code :P
--Improved the functionailty of some loops that could have caused possible FPS drops (safezone...)
 
-#### KnownIssues:
--New Loadout feature does not attach secondary weapon attachmnets (pistol/weapon that is placed within an inventory container).
--SafeZone Godmode is not really godmode thats because the damage fucntions are hard-codded into the game engine.
-
-#### Future Plans & updates:
- -Support for client side.
-	-UI for trader system, admin tool interface/panel, Customizable map UI, Killfeed UI
- - Fully Customizable Randomized AI server events.
- - Support of 'event mode' ( switching the server from survival to PvP style with ability to customize playzones,match duration etc )
-----------------------------------------------------------------------------------------------------------------------
-## How to Setup
-### IMPORTANT : For those who own a server provide by [www.Vilayer.com](Vilayer.com), can auto install the mod via the `AddonManager` (special thanks goes to the Vilayer team)!
-![Vilayer.com](https://ci5.googleusercontent.com/proxy/yE1RaRsPdehe3Y5lTBg3K2UmKkKYBPUl4HOLneY8hzalp34EayGB0c8qeUxsz4W_vaGETV57DzOYC1huj7bvJmDlyfIodhIE2p07uyLeVuvkyCvCOmKg=s0-d-e1-ft#https://www.vilayer.com/templates/ColoNode/html/img/logo_dark.png)
-### Step One:
-##### Go to your server directory and create a folder, name the folder what ever you desire son. (just give it a damn name that is not NewFolder)
-
-### Step Two:
-##### open the folder 'mpmissions' in your server directory, copy the file 'DayZSurvival.chernarusplus' and place it in there. (If you had any edits done to your loot xmls and wish to keep the storage make sure you replace it with the ones that are in 'DayZSurvival.chernarusplus' ) The db folder contains NO MODDED features/changes its all vanilla same goes with other xmls. Replace it with your modded xmls if you wish to.
-
-### Step Three:
-##### The server config file 'serverDZ.cfg' is in the main directory (Vanilla Fresh copy from steam), MOVE that file into the folder you created in step 1 Open up the config file and go to the bottom where you see 'dayzOffline.chernarusplus' REPLACE IT with 'DayZSurvival.chernarusplus' Save and exit.
-
-### Step Four:
-##### Place the foler 'ModdedScripts' into your main DayZ Server directory where the .exe is and all that stuff.
-
-### Step Five:
-##### add the following startup command lines to your server: -mod=ModdedScripts -config=NameOfFolderFromStep1\serverDZ.cfg -profiles=NameOfFolderFromStep1 -name=myServerName The -name command will change the name that shows up in global chat. When players join/leave/getkilled and other GlobalMessages. if you wish to actiavte any other mods listed in the Features list. Just add the command line to whatever starts your server exe.
+# ----INSTALL GUIDE---- #
+##copy mpmissions and ModdedScripts to your DayZServer folder
+##edit your serverDZ.cfg
+##change template="DayZoffline.chernarusplus";
+##to template="DayZSurvival.chernarusplus";
 
 
-# ----Features----
+add to your start up bat/script
+-mod=ModdedScripts
+# ----Features---- #
 
 ## -Enable/Disable player Join/leave messages. Check the file "Settings.C"
 
@@ -80,3 +49,45 @@
 
 ### USEFUL THINGS:
 #### How to generate new loot positions for your custom buildings: https://pastebin.com/FqunXuzc
+
+######Script/Addon Credits######
+Below is a list of scripts/codebases/githubs/etc used to make this repack, credits are added if available for each script repack
+
+#Original Custom Mission (and base for repack)#
+Created: DaOne
+Twitter: @DuhOneZ
+YouTube: https://www.youtube.com/channel/UCfTYjQEiTvJcUz-HAtg8rUQ
+GitHUB: https://github.com/Da0ne/DZMods
+Credits: 
+Sen(zalexki)KillScore system https://github.com/zalexki?
+
+#DayZ-BlackRavenDM#
+Created: zalexki
+GitHUB: https://github.com/zalexki/DayZ-BlackRavenDM?
+
+#Arkensor/DayZCommunityOfflineMode#
+Created: Arkensor
+GitHUB: https://github.com/Arkensor/DayZCommunityOfflineMode
+Credits:
+DuhOneZ - Code snippets
+Watchman - Documentation
+gallexme - Suggestion for the mission based version
+DannyDog - Code snippets, Object Editor and Updated camera tools
+n8m4re - Code: SaveManager
+wriley - Code snippets beards
+Jacob_Mango - Added key to toggle "Aimgate"
+
+#Airdrop#
+Created: mov3ax
+GitHUB: https://github.com/mov3ax/airdrop#setup
+Credits:
+i_kolobov - Documentation and Code snippets
+Arkensor - Code snippets
+FIDOv - Documentation
+Revelin - Code snippets?
+
+
+#### KnownIssues:
+-New Loadout feature does not attach secondary weapon attachmnets (pistol/weapon that is placed within an inventory container).
+-SafeZone Godmode is not really godmode thats because the damage fucntions are hard-codded into the game engine.
+
