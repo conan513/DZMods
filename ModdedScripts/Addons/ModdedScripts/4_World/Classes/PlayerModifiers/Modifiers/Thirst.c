@@ -1,8 +1,8 @@
 modded class Thirst
 {
-
+bool m_NoThirst;
     override void OnTick(PlayerBase player, float deltaT){
-		if(m_NoThirst == "true")
+		if(m_NoThirst)
 		{
 			//Do nothing
 		}

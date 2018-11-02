@@ -1,10 +1,10 @@
 modded class Hunger
 {
-	
+	bool m_NoHunger;
     override void OnTick(PlayerBase player, float deltaT)
 	{
 			
-		if(m_NoHunger == "true")
+		if(m_NoHunger)
 		{
 			//do nothing
 		}
