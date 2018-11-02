@@ -1,7 +1,12 @@
 class DayZSurvival : MissionServer
 {
+	bool m_debugmonitor;
+	//new vars
 	bool m_Debugmode;
-
+	bool m_NoThirst;	
+	bool m_NoHunger;
+	bool m_NoStamina;
+	
 	// Called within class as extentions NOT class mainscope DO NOT DEFINE CLASS IN FILE! 
 	#include "$CurrentDir:\\mpmissions\\DayZSurvival.chernarusplus\\ScriptedMods\\BuildingSpawner.c"
 	#include "$CurrentDir:\\mpmissions\\DayZSurvival.chernarusplus\\ScriptedMods\\MOTDMessages.c"
