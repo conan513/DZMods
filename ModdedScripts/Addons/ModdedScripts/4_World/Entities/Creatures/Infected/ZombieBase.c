@@ -3,6 +3,7 @@ modded class ZombieBase
 	private bool m_EventZed;
 	private PlayerBase lastHitSource;
 	private int lootDropChance;
+	bool m_walkingZeds;
 
 	ref TStringArray m_PossibleLootDrops,m_PossibleWeaponDrops;
 
@@ -77,7 +78,51 @@ modded class ZombieBase
 			GetGame().RPCSingleParam(lastHitSource, ERPCs.RPC_USER_ACTION_MESSAGE, Msgparam, true, lastHitSource.GetIdentity());
 		}
 	}
+	//-------------------------------------------------------------
+	//						Mindstate
+	//-------------------------------------------------------------
+	Override bool HandleMindStateChange(int pCurrentCommandID, DayZInfectedInputController pInputController, float pDt)
+	{
+		DayZInfectedCommandMove moveCommand = GetCommand_Move();
+		if( moveCommand && moveCommand.IsTurning() )
+			return false;
+		
+		int mindState = pInputController.GetMindState();
+		if( m_LastMindState != mindState )
+		{
+			switch( mindState )
+			{
+			case DayZInfectedConstants.MINDSTATE_CALM:
+				if( moveCommand )
+					moveCommand.SetIdleState(0);
+				break;
 
+			case DayZInfectedConstants.MINDSTATE_DISTURBED:
+				if( moveCommand )
+					moveCommand.SetIdleState(1);
+				break;
+			
+			case DayZInfectedConstants.MINDSTATE_CHASE:
+				if(m_walkingZeds)
+				{
+					if( moveCommand && (m_LastMindState < DayZInfectedConstants.MINDSTATE_CHASE) )
+					moveCommand.SetIdleState(2);
+				break;
+				}
+				else
+				{	//No Running zeds
+					if( moveCommand )
+						moveCommand.SetIdleState(1);
+				break;
+				}
+			}
+			
+			m_LastMindState = mindState;
+			m_AttackCooldownTime = 0.0;
+		}
+		return false;
+	}
+	
 	override void EEHitBy(TotalDamageResult damageResult, int damageType, EntityAI source, string component, string ammo, vector modelPos)
 	{
 		super.EEHitBy(damageResult, damageType, source, component, ammo, modelPos);
