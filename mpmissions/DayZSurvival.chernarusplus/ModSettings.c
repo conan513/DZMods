@@ -12,6 +12,8 @@ m_debugmonitor			= true; //Enable Debug monitor for normal players
 
 //Airdrops
 EnableAirdrops 			= true; //Airdrops randomly across map
+SpawnZombie 			= true; // Spawn zombie near airdrop when landed
+ShowSignal 				= true; // Show smoke signal when airdrop landed
 
 //Zeds
 m_ZedHordes				= true;  //Random zombie hordes that spawn on the map (The tunables for this mod can be found in 'InfectedHordes.c')
