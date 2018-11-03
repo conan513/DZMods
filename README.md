@@ -1,7 +1,7 @@
 
 # DayZ SA Repack 0.1 - Go Away Sheep (GAS) By Falling sheep#
 
-#### Current Build: 71
+#### Current Build: 72
 #### NOTE: DO NOT sign the mod ModdedScripts, if you do then verifySignature would not work!!
 
 
