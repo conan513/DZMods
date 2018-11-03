@@ -9,6 +9,8 @@ class DayZSurvival : MissionServer
 	bool m_NoStamina;
 	bool m_walkingZeds;
 	bool EnableAirdrops;
+	bool SpawnZombie;
+    bool ShowSignal;
 	
 	// Called within class as extentions NOT class mainscope DO NOT DEFINE CLASS IN FILE! 
 	#include "$CurrentDir:\\mpmissions\\DayZSurvival.chernarusplus\\ScriptedMods\\BuildingSpawner.c"
