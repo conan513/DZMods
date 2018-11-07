@@ -1,7 +1,7 @@
 
 # DayZ SA Repack 0.1 - Go Away Sheep (GAS) By Falling sheep#
 
-#### Current Build: 72
+#### Current Build: 73
 #### NOTE: DO NOT sign the mod ModdedScripts, if you do then verifySignature would not work!!
 
 
@@ -20,6 +20,11 @@
 ##### in ModSettings use m_CustomLoadouts to enable/disable custom loadouts
 ##### This feature allows the fresh spawn players to load in with preset randomized gear. 
 ##### To Configure the type of items to spawn on your players check the folder "mpmissions/DayZSurvival.chernarusplus/ScriptedMods/LoadOuts"  Each Catagory is in a seperate .txt file If you wish to remove an item or add, make sure you follow the same layout as the file comes in.  The Script will randomly select an item from each catagory. If you wish to remove a certain catagory simply leave the file empty or delete it. You can modify the lodaouts while the server is running! After you make your edits login as admin in game and use the Admin command /updateLoadouts
+
+##  - Random Spawn lodaouts.
+##### in ModSettings use m_RandomizedLoadouts2 to enable/disable random  loadouts
+##### This feature allows the fresh spawn players to load in with preset randomized gear like above but is called differently. 
+##### To Configure the type of items to spawn on your players look in "mpmissions/DayZSurvival.chernarusplus/ScriptedMods/DayzSurvival.c" at the top  look for //This is for the randomly generated loadouts type2
 
 ## - Weapon on Spawn
 ##### in ModSettings use m_SpawnArmed to enable/disable spawn with gun
@@ -108,6 +113,9 @@ Below is a list of scripts/codebases/githubs/etc used to make this repack, credi
 ##### FIDOv - Documentation
 ##### Revelin - Code snippets?
 
+### Random loadouts
+##### Created:  Johnny Bravo
+##### Opendayz: https://opendayz.net/members/johnny-bravo.21601/
 
 ## Known Issues:
 -New Loadout feature does not attach secondary weapon attachmnets (pistol/weapon that is placed within an inventory container).
