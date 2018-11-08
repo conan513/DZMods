@@ -27,6 +27,7 @@ class DayZSurvival : MissionServer
     bool ShowSignal;
 	
 	// Called within class as extentions NOT class mainscope DO NOT DEFINE CLASS IN FILE! 
+	#include "$CurrentDir:\\mpmissions\\DayZSurvival.chernarusplus\\ModSettings.c"
 	#include "$CurrentDir:\\mpmissions\\DayZSurvival.chernarusplus\\ScriptedMods\\BuildingSpawner.c"
 	#include "$CurrentDir:\\mpmissions\\DayZSurvival.chernarusplus\\ScriptedMods\\MOTDMessages.c"
 	#include "$CurrentDir:\\mpmissions\\DayZSurvival.chernarusplus\\ScriptedMods\\SafeZoneFunctions.c"
@@ -62,6 +63,11 @@ class DayZSurvival : MissionServer
 	void DayZSurvival()
 	{
 		AirDropClass = new AirDrop;
+	}
+	
+	void ~DayZSurvival()
+	{
+		
 	}
 	
 	override void OnUpdate( float timeslice )
@@ -194,8 +200,7 @@ class DayZSurvival : MissionServer
 
 	override void OnInit()
 	{
-		//---------------
-		#include "$CurrentDir:\\mpmissions\\DayZSurvival.chernarusplus\\ModSettings.c" //Read mod settings
+		super.OnInit();
 
 		if (!m_Debugmode)
 		{
