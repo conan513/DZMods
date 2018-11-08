@@ -1,7 +1,7 @@
 
 # DayZ SA Repack 0.1 - Go Away Sheep (GAS) By Falling sheep#
 
-#### Current Build: 73
+#### Current Build: 74
 #### NOTE: DO NOT sign the mod ModdedScripts, if you do then verifySignature would not work!!
 
 
@@ -56,10 +56,10 @@
 ##### you can edit the hordes changing DayZSurvival.chernarusplus\ScriptedMods\InfectedHordes.c
 
 ## - Custom SafeZone with godmode.
-##### This feature allows you to place a safezone anywhere on the map with a radius you wish for. To modifiy the safeZone area check this file " mpmissions/DayZSurvival.chernarusplus/ScriptedMods/SafeZoneFunctions "
+##### This feature allows you to place a safezone anywhere on the map with a radius you wish for. To modify the safeZone area check this file " mpmissions/DayZSurvival.chernarusplus/ScriptedMods/SafeZoneFunctions "
 
 ## - Spawn Custom Buildings anywhere on the map
-##### This feature is just an easy way to place your CustomBuildings code in a tidy spot and not in the main init where shit gets clustred. Check the file " mpmissions/DayZSurvival.chernarusplus/ScriptedMods/BuildingSpawner.c" it does not matter how you spawn your buildings or set thier direction oritention etc, just make sure the script is inside the Void() to get executed on server startup A nice way to get buildings imported is to use the COM (Community Offline Mode from Arkensor). You can place buidlings and extract thier info. Thank @DannyDog for that feature
+##### This feature is just an easy way to place your CustomBuildings code in a tidy spot. Check the file " mpmissions/DayZSurvival.chernarusplus/ScriptedMods/BuildingSpawner.c" it does not matter how you spawn your buildings or set thier direction oritention etc, just make sure the script is inside the Void() to get executed on server startup A nice way to get buildings imported is to use the COM (Community Offline Mode from Arkensor). You can place buidlings and extract thier info. Thank @DannyDog for that feature
 
 ## - Chat Based Admin Tool set.  
 ##### Simply Add your steam 64 ID into the file mpmissions/DayZSurvival.chernarusplus/ScriptedMods/Admins.txt" Set a server admin password in the server.cfg, in game login using the password. #login myPassword The Admintoolset feature can be found here: https://pastebin.com/GGrCDg3f

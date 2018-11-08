@@ -1,7 +1,21 @@
 class DayZSurvival : MissionServer
 {
 	ref AirDrop AirDropClass; // Class definition
-	
+	bool m_StaticLoadouts;
+	bool m_RandomizedLoadouts;
+	bool m_RandomizedLoadouts2;
+	bool m_CustomLoadouts;
+	string m_RandomLoadoutsPath;
+	string m_AdminListPath;
+	bool m_SpawnArmed;
+	bool m_StaminaStatus;
+	bool m_SafeZone;
+	bool m_CustomBuildings;
+	bool m_SessionFeed;
+	bool m_ZedHordes;
+	bool m_ProxyExportMode;
+	float m_LogInTimerLength;
+	float TimerSlice; // Timeslice
 	bool m_debugmonitor;
 	bool m_Debugmode;
 	bool m_NoThirst;	
@@ -44,27 +58,6 @@ class DayZSurvival : MissionServer
 	TStringArray food = {"Worm","SmallGuts","PowderedMilk","PeachesCan","Pear"};
 	TStringArray radio = {"PersonalRadio"};
 	TStringArray battery = {"Battery9V"};
-	
-	/*Dont touch*/
-	//---------------
-	bool m_StaticLoadouts;
-	bool m_RandomizedLoadouts;
-	bool m_RandomizedLoadouts2;
-	bool m_CustomLoadouts;
-
-	string m_RandomLoadoutsPath;
-	string m_AdminListPath;
-
-	//---------------
-	bool m_SpawnArmed;
-	bool m_StaminaStatus;
-	bool m_SafeZone;
-	bool m_CustomBuildings;
-	bool m_SessionFeed;
-	bool m_ZedHordes;
-	bool m_ProxyExportMode;
-	float m_LogInTimerLength;
-	float TimerSlice; // Timeslice
 	
 	void DayZSurvival()
 	{

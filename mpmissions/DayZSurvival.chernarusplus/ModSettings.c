@@ -34,16 +34,7 @@ m_SafeZone				= true;  //set true to Enable Safe Zone
 //							AIR DROPS							//
 //////////////////////////////////////////////////////////////////
 m_CustomBuildings		= true;  //Spawns the buildings you add in file BuildingSpawner.c
-
-//////////////////////////////////////////////////////////////////
-//							AIR DROPS							//
-//////////////////////////////////////////////////////////////////
-EnableAirdrops 			= true; //Airdrops randomly across map
-<<<<<<< HEAD
-SpawnZombie				= true; // Spawn zombie near airdrop when landed
-=======
 SpawnZombie 			= true; // Spawn zombie near airdrop when landed
->>>>>>> origin/master
 ShowSignal 				= true; // Show smoke signal when airdrop landed
 
 //////////////////////////////////////////////////////////////////
@@ -52,19 +43,17 @@ ShowSignal 				= true; // Show smoke signal when airdrop landed
 m_ZedHordes				= true;  //Random zombie hordes that spawn on the map (The tunables for this mod can be found in 'InfectedHordes.c')
 m_walkingZeds			= false; //no running zombies - WIP keep false
 
-<<<<<<< HEAD
-//MOTD
+//////////////////////////////////////////////////////////////////
+//							MOTD								//
+//////////////////////////////////////////////////////////////////
 m_MOTD					= true; //MOTD
 line1					= "Welcome!"; //first line of text in MOTD
 line2					= "custom server";//Second line of text in MOTD
 line3					= "fallingsheep style";//Third line of text in MOTD
 
-=======
 //////////////////////////////////////////////////////////////////
 //							PLAYER STATS						//
 //////////////////////////////////////////////////////////////////
->>>>>>> origin/master
-
 m_NoThirst				= false; //Set true to disable thirst
 m_NoHunger				= false; //Set true to disable hunger
 m_NoStamina				= false; //Set true to disable stamina
