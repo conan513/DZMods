@@ -1,14 +1,16 @@
 class DayZSurvival : MissionServer
 {
 	ref AirDrop AirDropClass; // Class definition
+	
 	bool m_debugmonitor;
-	//new vars
 	bool m_Debugmode;
 	bool m_NoThirst;	
 	bool m_NoHunger;
 	bool m_NoStamina;
 	bool m_walkingZeds;
 	bool EnableAirdrops;
+	bool SpawnZombie;
+    bool ShowSignal;
 	
 	// Called within class as extentions NOT class mainscope DO NOT DEFINE CLASS IN FILE! 
 	#include "$CurrentDir:\\mpmissions\\DayZSurvival.chernarusplus\\ScriptedMods\\BuildingSpawner.c"
@@ -19,10 +21,9 @@ class DayZSurvival : MissionServer
 	#include "$CurrentDir:\\mpmissions\\DayZSurvival.chernarusplus\\ScriptedMods\\LoadStaticLDFunctions.c"
 
 	ref InfectedHordes ZmbEvents;
-
-	//This is for the randomly generated loadouts
+	
+	//This is for the randomly generated loadouts type1
 	ref TStringArray LoadoutCatagories = {"Bags","Gloves","Vests","Tops","Pants","Boots","HeadGear"}; //Add any new catagories here, make sure the name matches everywhere used including file
-
 	ref TStringArray Bags = {};
 	ref TStringArray Gloves = {};
 	ref TStringArray Vests = {};
@@ -30,13 +31,25 @@ class DayZSurvival : MissionServer
 	ref TStringArray Pants = {};
 	ref TStringArray Boots = {};
 	ref TStringArray HeadGear = {};
-
 	ref map<string,string>	PoweredOptics = new map<string,string>; //Type of optics, type of battery
-
+	
+	//This is for the randomly generated loadouts type2
+	//array of items to random add
+	TStringArray tops = {"Shirt_BlueCheck","Shirt_RedCheck","Shirt_GreenCheck","Shirt_WhiteCheck","Shirt_PlaneBlack","HikingJacket_Blue","HikingJacket_Green","HikingJacket_Red","Sweater_Blue","Sweater_Gray","Sweater_Green","Sweater_Red","TShirt_Beige","TShirt_Black","TShirt_Blue","TShirt_Green","TShirt_Grey","TShirt_OrangeWhiteStripes","TShirt_Red","TShirt_RedBlackStripes","TShirt_White"};
+	TStringArray pants = {"Jeans_Black","Jeans_BlueDark","Jeans_Blue","Jeans_Brown","Jeans_Green","Jeans_Grey"};
+	TStringArray shoes = {"AthleticShoes_Black","AthleticShoes_Blue","AthleticShoes_Brown","AthleticShoes_Green","AthleticShoes_Grey","HikingBootsLow_Beige","HikingBootsLow_Black","HikingBootsLow_Blue","HikingBootsLow_Grey","HikingBoots_Black","HikingBoots_Brown","HikingJacket_Black"};
+	TStringArray tool = {"OrienteeringCompass","StoneKnife","PurificationTablets","RoadFlare"};
+	TStringArray medic = {"Rags","BandageDressing"};
+	TStringArray drink = {"SodaCan_Cola","SodaCan_Kvass","SodaCan_Pipsi","SodaCan_Spite"};
+	TStringArray food = {"Worm","SmallGuts","PowderedMilk","PeachesCan","Pear"};
+	TStringArray radio = {"PersonalRadio"};
+	TStringArray battery = {"Battery9V"};
+	
 	/*Dont touch*/
 	//---------------
 	bool m_StaticLoadouts;
 	bool m_RandomizedLoadouts;
+	bool m_RandomizedLoadouts2;
 	bool m_CustomLoadouts;
 
 	string m_RandomLoadoutsPath;
@@ -381,6 +394,9 @@ class DayZSurvival : MissionServer
 			}
 			else if (m_RandomizedLoadouts)
 			{
+				//safe guard
+				m_RandomizedLoadouts2 = false;//turn off other load outs just in case
+				
 				player.RemoveAllItems();
 
 				if (Bags.Count() > 0) { player.GetInventory().CreateInInventory( Bags.GetRandomElement() );  }
@@ -401,10 +417,59 @@ class DayZSurvival : MissionServer
 			}
 			else
 			{
-				//Vanilla
-				itemEnt = player.GetInventory().CreateInInventory( "Rag" );
-				itemBs = ItemBase.Cast(itemEnt);							
-				itemBs.SetQuantity(6);
+				if (m_RandomizedLoadouts2)
+				{
+					//safe guard
+					m_RandomizedLoadouts = false;//turn off other load outs just in case
+				
+					player.RemoveAllItems();       
+					
+					EntityAI itemEnt;
+					EntityAI itemIn;
+					ItemBase itemBs;
+			
+					//Add items
+					EntityAI item = player.GetInventory().CreateInInventory(tops.GetRandomElement());
+					itemBs = ItemBase.Cast(itemEnt);
+					SetHealth(itemEnt, 20);
+					
+					EntityAI item2 = player.GetInventory().CreateInInventory(pants.GetRandomElement());
+					itemBs = ItemBase.Cast(itemEnt);
+					SetHealth(itemEnt, 20);
+					
+					EntityAI item3 = player.GetInventory().CreateInInventory(shoes.GetRandomElement());
+					itemBs = ItemBase.Cast(itemEnt);
+					SetHealth(itemEnt, 20);
+							
+					itemEnt = player.GetInventory().CreateInInventory(tool.GetRandomElement());
+					itemBs = ItemBase.Cast(itemEnt);
+					SetRandomHealth(itemEnt);
+			
+					itemEnt = player.GetInventory().CreateInInventory(medic.GetRandomElement());
+					itemBs = ItemBase.Cast(itemEnt);
+					SetRandomHealth(itemEnt);
+			
+					itemEnt = player.GetInventory().CreateInInventory(drink.GetRandomElement());
+					itemBs = ItemBase.Cast(itemEnt);
+					SetRandomHealth(itemEnt);
+			
+					itemEnt = player.GetInventory().CreateInInventory(food.GetRandomElement());
+					itemBs = ItemBase.Cast(itemEnt);
+					SetRandomHealth(itemEnt);
+					
+					itemEnt = player.GetInventory().CreateInInventory(radio.GetRandomElement());
+					itemBs = ItemBase.Cast(itemEnt);
+					SetRandomHealth(itemEnt);
+					
+					itemEnt = player.GetInventory().CreateInInventory(battery.GetRandomElement());
+					itemBs = ItemBase.Cast(itemEnt);
+					SetRandomHealth(itemEnt);
+				} else {
+					//Vanilla
+					itemEnt = player.GetInventory().CreateInInventory( "Rag" );
+					itemBs = ItemBase.Cast(itemEnt);							
+					itemBs.SetQuantity(6);
+				}
 			}
 		}
 		else
@@ -435,5 +500,16 @@ class DayZSurvival : MissionServer
 				break;
 			}
 		}
+	}
+
+	void SetRandomHealth(EntityAI itemEnt)
+	{
+		int rndHlt = Math.RandomInt(40,100);
+		itemEnt.SetHealth("","",rndHlt);
+	}
+
+	void SetHealth(EntityAI itemEnt, int health)
+	{
+	itemEnt.SetHealth("","",health);
 	}
 };
