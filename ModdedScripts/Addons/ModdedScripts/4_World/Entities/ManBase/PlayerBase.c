@@ -120,60 +120,38 @@ modded class PlayerBase
         }
     }
 	
-	override void EEHitBy(TotalDamageResult damageResult, int damageType, EntityAI source, string component, string ammo, vector modelPos)
+	override void EEHitBy(TotalDamageResult damageResult, int damageType, EntityAI source, int component, string dmgZone, string ammo, vector modelPos)
 	{
-		super.EEHitBy(damageResult, damageType, source, component, ammo, modelPos);
-		
-		string AdminGmodeCheck, SafeZoneGmodeCheck;
+		super.EEHitBy(damageResult, damageType, source, component, dmgZone, ammo, modelPos);
+		string SafeZoneGmodeCheck;
 	    ref SurvivorBase SBPlayer = this;
 
 		string GUID = SBPlayer.GetPlayerID();
-		g_Game.GetProfileString("AdminGmode"+GUID,AdminGmodeCheck);
 		g_Game.GetProfileString("SafeZoneStatus"+GUID,SafeZoneGmodeCheck);
-		
-		if (AdminGmodeCheck == "true" || SafeZoneGmodeCheck == "true")
-		{
-			if (SafeZoneGmodeCheck == "true") //SafeZone
-			{
-				if ( damageResult != null )
-				{
-					float HlthdmgDone = damageResult.GetDamage(component, "");
-					float BlddmgDone  = damageResult.GetDamage(component, "Blood");
-					float ShcdmgDone  = damageResult.GetDamage(component, "Shock");
-					//We dont want to give players full heath on each hit, as that would make safezone a heal centre..
-					SetHealth( GetHealth("","") + HlthdmgDone );
-					SetHealth( "","Blood", GetHealth("","Blood") + BlddmgDone);
-					SetHealth( "","Shock", GetHealth( "","Shock") + ShcdmgDone);
-				}
 				
-			}
-			else if (AdminGmodeCheck == "true") //For admins give heal on each hit.
+		//TEMP
+		if (SafeZoneGmodeCheck == "true") //SafeZone
+		{
+			if ( damageResult != null )
 			{
 				SetHealth( GetMaxHealth( "", "") );
 				SetHealth( "","Blood", GetMaxHealth( "", "Blood" ) );
 				SetHealth( "","Shock", GetMaxHealth( "","Shock") );
-				GetStatStamina().Set(1000);
-				GetStatEnergy().Set(1000);
-				GetStatWater().Set(1000);
-				GetStatStomachSolid().Set(300);		
-				GetStatStomachWater().Set(300);
-				GetStatStomachEnergy().Set(300);
-				GetStatHeatComfort().Set(0);
 			}
 		}
 		else
 		{
-			if( damageResult != null && damageResult.GetDamage(component, "Shock") > 0)
+			if( damageResult != null && damageResult.GetDamage(dmgZone, "Shock") > 0)
 			{
 				m_LastShockHitTime = GetGame().GetTime();
 			}
 			
 			//new bleeding computation
 			//---------------------------------------
-			if ( damageResult != null && GetBleedingManager() )
+			if ( damageResult != null && GetBleedingManagerServer() )
 			{
-				float dmg = damageResult.GetDamage(component, "Blood");
-				GetBleedingManager().ProcessHit(dmg, component, ammo, modelPos);
+				float dmg = damageResult.GetDamage(dmgZone, "Blood");
+				GetBleedingManagerServer().ProcessHit(dmg, component, dmgZone, ammo, modelPos);
 			}
 			//---------------------------------------
 		}

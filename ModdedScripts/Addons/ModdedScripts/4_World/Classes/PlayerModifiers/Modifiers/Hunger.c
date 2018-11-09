@@ -1,12 +1,38 @@
-modded class Hunger
+class HungerMdfr: ModifierBase
 {
-	bool m_NoHunger;
-    override void OnTick(PlayerBase player, float deltaT)
+	protected float	m_EnergyDelta;
+	protected float	m_LastEnergyLevel;
+	ref HumanMovementState		m_MovementState	= new HumanMovementState();
+	
+	
+		
+	override void Init()
 	{
-			
+		m_TrackActivatedTime = false;
+		m_ID 					= eModifiers.MDF_HUNGER;
+		m_TickIntervalInactive 	= DEFAULT_TICK_TIME_INACTIVE;
+		m_TickIntervalActive 	= 1;
+	}
+	override bool ActivateCondition(PlayerBase player)
+	{
+		return true;
+	}
+
+	override bool DeactivateCondition(PlayerBase player)
+	{
+		return false;
+	}
+	
+	override void OnReconnect(PlayerBase player)
+	{
+
+	}
+
+	override void OnTick(PlayerBase player, float deltaT)
+	{
 		if(m_NoHunger)
 		{
-			//do nothing
+			//do nothing no health drain
 		}
 		else
 		{
@@ -20,10 +46,20 @@ modded class Hunger
 			m_LastEnergyLevel = player.GetStatEnergy().Get();
 			
 			player.GetStatEnergy().Add( -metabolic_speed * deltaT );
-			if ( energy <= PlayerConstants.LOW_ENERGY_TRESHOLD )
+			if ( energy <= PlayerConstants.LOW_ENERGY_THRESHOLD )
 			{
+				/*
+				float currenthealth = player.GetHealth("GlobalHealth", "Health");
+				float currentblood = player.GetHealth("GlobalHealth", "Blood");
+				
+				float health_delta = ( 1 - Math.InverseLerp(0,PlayerConstants.LOW_ENERGY_THRESHOLD, player.GetStatEnergy().Get()) ) * -PlayerConstants.DAMAGE_PER_SEC * deltaT;
+				
+				player.AddHealth("GlobalHealth", "", health_delta);
+				*/
 				player.AddHealth("GlobalHealth", "Health", -PlayerConstants.LOW_ENERGY_DAMAGE_PER_SEC * deltaT );
 			}
 		}
 	}
-}
+	
+	
+};

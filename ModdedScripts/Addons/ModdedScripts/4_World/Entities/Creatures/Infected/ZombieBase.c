@@ -3,9 +3,10 @@ modded class ZombieBase
 	private bool m_EventZed;
 	private PlayerBase lastHitSource;
 	private int lootDropChance;
-	bool m_walkingZeds;
-	//fix priv var crash
-	private int m_LastMindState2 = -1;
+	
+	//----------------------
+
+	//----------------------
 
 	ref TStringArray m_PossibleLootDrops,m_PossibleWeaponDrops;
 
@@ -31,15 +32,22 @@ modded class ZombieBase
 		{
 			if (m_EventZed)
 			{
-				StartCommand_Death();
 				AfterDeath();
+				StartCommand_Death(m_DeathType, m_DamageHitDirection);
+				m_MovementSpeed = -1;
+				m_MindState = -1;
+				SetSynchDirty();
 			}
 			else
 			{
-				StartCommand_Death();
+				StartCommand_Death(m_DeathType, m_DamageHitDirection);
+				m_MovementSpeed = -1;
+				m_MindState = -1;
+				SetSynchDirty();
 			}
 			return true;
 		}
+
 		return false;
 	}
 	//-------------------------------------------------------------
@@ -80,54 +88,10 @@ modded class ZombieBase
 			GetGame().RPCSingleParam(lastHitSource, ERPCs.RPC_USER_ACTION_MESSAGE, Msgparam, true, lastHitSource.GetIdentity());
 		}
 	}
-	//-------------------------------------------------------------
-	//						Mindstate
-	//-------------------------------------------------------------
-	override bool HandleMindStateChange(int pCurrentCommandID, DayZInfectedInputController pInputController, float pDt)
-	{
-		DayZInfectedCommandMove moveCommand = GetCommand_Move();
-		if( moveCommand && moveCommand.IsTurning() )
-			return false;
-		
-		int mindState = pInputController.GetMindState();
-		if( m_LastMindState2 != mindState )
-		{
-			switch( mindState )
-			{
-			case DayZInfectedConstants.MINDSTATE_CALM:
-				if( moveCommand )
-					moveCommand.SetIdleState(0);
-				break;
 
-			case DayZInfectedConstants.MINDSTATE_DISTURBED:
-				if( moveCommand )
-					moveCommand.SetIdleState(1);
-				break;
-			
-			case DayZInfectedConstants.MINDSTATE_CHASE:
-				if(m_walkingZeds)
-				{
-					if( moveCommand && (m_LastMindState2 < DayZInfectedConstants.MINDSTATE_CHASE) )
-					moveCommand.SetIdleState(2);
-				break;
-				}
-				else
-				{	//No Running zeds
-					if( moveCommand )
-						moveCommand.SetIdleState(1);
-				break;
-				}
-			}
-			
-			m_LastMindState2 = mindState;
-			m_AttackCooldownTime = 0.0;
-		}
-		return false;
-	}
-	
-	override void EEHitBy(TotalDamageResult damageResult, int damageType, EntityAI source, string component, string ammo, vector modelPos)
+	override void EEHitBy(TotalDamageResult damageResult, int damageType, EntityAI source, int component, string dmgZone, string ammo, vector modelPos)
 	{
-		super.EEHitBy(damageResult, damageType, source, component, ammo, modelPos);
+		super.EEHitBy(damageResult, damageType, source, component, dmgZone, ammo, modelPos);
 
 		string sourceType = source.GetType();
 		if (lastHitSource != source && GetGame().IsKindOf( sourceType, "SurvivorBase"))
@@ -136,7 +100,7 @@ modded class ZombieBase
 		}
 
 		int oRandValue = Math.RandomIntInclusive(0,100);
-		float DamageDealt = damageResult.GetDamage(component,""); //zoneName -- healthType
+		float DamageDealt = damageResult.GetDamage(dmgZone,""); //zoneName -- healthType
 
 		this.SetHealth(oRandValue - DamageDealt);
 	}
