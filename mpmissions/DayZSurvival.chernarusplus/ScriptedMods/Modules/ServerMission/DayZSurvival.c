@@ -14,14 +14,20 @@ class DayZSurvival : MissionServer
 	ref InfectedHordes m_ZombieEvents;
 	protected float m_LogInTimerLength = 1;     //in seconds the spawn timer when players login!
 	bool m_StaminaStatus = false;
+	//sheep
 	bool m_HealthStatus = false;
 	bool m_ThirstStatus = false;
+	bool EnableAirdrops = true;
+	ref AirDrop AirDropClass;
+
 
 	void DayZSurvival()
 	{
 		Print("VANILLA PLUS PLUS IS ALIVE!!");
 		m_Modules = new set<ref ModuleManager>;
 		RegisterModules();
+		//Airdrop
+		AirDropClass = new AirDrop;
 	}
 	
 	void ~DayZSurvival()
@@ -123,6 +129,19 @@ class DayZSurvival : MissionServer
 		if (ModTunables.Cast(GetModule(ModTunables)).IsActive("InfectedHordes"))
 		{
 			m_ZombieEvents = new InfectedHordes;
+		}
+		
+		if (ModTunables.Cast(GetModule(ModTunables)).IsActiveMisc("Airdrops"))
+		{
+			EnableAirdrops = true; //Airdrops
+		}
+		if (ModTunables.Cast(GetModule(ModTunables)).IsActiveMisc("AirdropZombies"))
+		{
+			SpawnZombie = true; //AirdropZombies
+		}
+		if (ModTunables.Cast(GetModule(ModTunables)).IsActiveMisc("AirdropFlare"))
+		{
+			ShowSignal = true; //AirdropFlares
 		}
 		
 		//-----------
@@ -264,6 +283,20 @@ class DayZSurvival : MissionServer
 			itemEnt = player.GetInventory().CreateInInventory( "Rag" );
 			itemBs = ItemBase.Cast(itemEnt);							
 			itemBs.SetQuantity(6);
+		}
+	}
+	//airdrop
+	float TimerSlice; // Timeslice
+	override void OnUpdate( float timeslice )
+	{
+		super.OnUpdate( timeslice );
+
+		// FPS Fix
+		TimerSlice += timeslice;
+		if (TimerSlice >= AirDropClass.TimesliceMultiplyier)
+		{
+			AirDropClass.CreateAirDrop();
+			TimerSlice = 0;	
 		}
 	}
 }

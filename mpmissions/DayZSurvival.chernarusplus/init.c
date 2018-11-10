@@ -1,4 +1,5 @@
 #include "$CurrentDir:\\mpmissions\\DayZSurvival.chernarusplus\\ScriptedMods\\Modules\\ServerMission\\DayZSurvival.c"
+#include "$CurrentDir:\\mpmissions\\DayZSurvival.chernarusplus\\ScriptedMods\\Modules\\Airdrop\\AirDrop.c"
 
 Mission CreateCustomMission(string path)
 {

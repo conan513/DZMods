@@ -11,13 +11,19 @@ class ModTunables extends ModuleManager
 	//============================
 
 	//==============Misc==========
-	protected bool m_Debugmode 		   = false; //Set true to disable db for faster server loading and for testing purposes
-	protected bool m_ProxyExportMode   = false; //Set to ture to export a new loot positions xml (export can be found in your Storage folder).
-	protected bool m_StaminaStatus     = true;  //set to true to disable Stamina
-	protected bool m_HealthStatus     = false;  //set to true to disable Health
-	protected bool m_ThirstStatus     = false;  //set to true to disable Thirst
-	protected bool m_CustomBuildings   = true;  //Spawns the buildings you add in file BuildingSpawner.c
-	protected bool m_SessionFeed	   = true;  //Set to true to enable Disconnect/Connect Messages
+	protected bool m_Debugmode 		   	= false; //Set true to disable db for faster server loading and for testing purposes
+	protected bool m_ProxyExportMode  	= false; //Set to ture to export a new loot positions xml (export can be found in your Storage folder).
+	protected bool m_StaminaStatus   	= true;  //set to true to disable Stamina
+	protected bool m_HealthStatus    	= false;  //set to true to disable Health
+	protected bool m_ThirstStatus    	= false;  //set to true to disable Thirst
+	protected bool m_CustomBuildings  	= true;  //Spawns the buildings you add in file BuildingSpawner.c
+	protected bool m_SessionFeed	  	= true;  //Set to true to enable Disconnect/Connect Messages
+	//============================
+	
+	//==============Airdrops==========
+	protected bool EnableAirdrops		= true;  //random airdrops
+	protected bool SpawnZombie 			= true; // Spawn zombie near airdrop when landed
+	protected bool ShowSignal 			= true; // Show smoke signal when airdrop landed
 	//============================
 	
 	void ModTunables( DayZSurvival ServerMission )
@@ -52,6 +58,18 @@ class ModTunables extends ModuleManager
 			
 			case "ThirstStatus":
 			return m_ThirstStatus;
+			break;
+			
+			case "Airdrops":
+			return EnableAirdrops;
+			break;
+			
+			case "AirdropZombies":
+			return SpawnZombie;
+			break;
+			
+			case "AirdropFlare":
+			return ShowSignal;
 			break;
 
 			case "CustomBuildings":
