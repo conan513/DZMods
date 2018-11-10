@@ -2,4 +2,41 @@ Developed by DaOne.
 Twitter: @DuhOneZ
 YouTube: https://www.youtube.com/channel/UCfTYjQEiTvJcUz-HAtg8rUQ
 
+Modified/Edited by Fallingsheep
+Opendayz: https://opendayz.net/members/fallingsheep.4806/
+
+
 DayZ Standalone Custom Survival Mission.
+
+Original Custom Mission (and base for repack)
+Created: DaOne
+Twitter: @DuhOneZ
+YouTube: https://www.youtube.com/channel/UCfTYjQEiTvJcUz-HAtg8rUQ
+GitHUB: https://github.com/Da0ne/DZMods
+Credits: 
+Sen(zalexki)KillScore system https://github.com/zalexki?
+
+DayZ-BlackRavenDM
+Created: zalexki
+GitHUB: https://github.com/zalexki/DayZ-BlackRavenDM?
+
+Arkensor/DayZCommunityOfflineMode
+Created: Arkensor
+GitHUB: https://github.com/Arkensor/DayZCommunityOfflineMode
+Credits:
+DuhOneZ - Code snippets
+Watchman - Documentation
+gallexme - Suggestion for the mission based version
+DannyDog - Code snippets, Object Editor and Updated camera tools
+n8m4re - Code: SaveManager
+wriley - Code snippets beards
+Jacob_Mango - Added key to toggle "Aimgate"
+
+Airdrop
+Created: mov3ax
+GitHUB: https://github.com/mov3ax/airdrop#setup
+Credits:
+i_kolobov - Documentation and Code snippets
+Arkensor - Code snippets
+FIDOv - Documentation
+Revelin - Code snippets?
