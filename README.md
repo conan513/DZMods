@@ -1,7 +1,7 @@
 
-# DayZ SA Repack 0.1 - Go Away Sheep (GAS) By Falling sheep#
+# DayZ SA Repack 0.2 - Another Build Commit (ABC) By Falling sheep#
 
-#### Current Build: 74
+#### Current Build: 86
 #### NOTE: DO NOT sign the mod ModdedScripts, if you do then verifySignature would not work!!
 
 
@@ -14,45 +14,40 @@
 # ----Features---- 
 
 ## - Player Join/leave messages.
-#### in ModSettings use m_SessionFeed to enable/disable join messages for players
+#### in Tunables.c use m_SessionFeed to enable/disable join messages for players
 
 ##  - Custom Spawn lodaouts.
-##### in ModSettings use m_CustomLoadouts to enable/disable custom loadouts
+##### in Tunables.c use m_CustomLoadouts to enable/disable custom loadouts
 ##### This feature allows the fresh spawn players to load in with preset randomized gear. 
 ##### To Configure the type of items to spawn on your players check the folder "mpmissions/DayZSurvival.chernarusplus/ScriptedMods/LoadOuts"  Each Catagory is in a seperate .txt file If you wish to remove an item or add, make sure you follow the same layout as the file comes in.  The Script will randomly select an item from each catagory. If you wish to remove a certain catagory simply leave the file empty or delete it. You can modify the lodaouts while the server is running! After you make your edits login as admin in game and use the Admin command /updateLoadouts
 
-##  - Random Spawn lodaouts.
-##### in ModSettings use m_RandomizedLoadouts2 to enable/disable random  loadouts
-##### This feature allows the fresh spawn players to load in with preset randomized gear like above but is called differently. 
-##### To Configure the type of items to spawn on your players look in "mpmissions/DayZSurvival.chernarusplus/ScriptedMods/DayzSurvival.c" at the top  look for //This is for the randomly generated loadouts type2
-
 ## - Weapon on Spawn
-##### in ModSettings use m_SpawnArmed to enable/disable spawn with gun
+##### in Tunables.c use m_SpawnArmed to enable/disable spawn with gun
 ##### This feature allows you to give fresh spawns a gun on startup 
 ##### To edit the types of guns it spawns, go into the following file " mpmissions/DayZSurvival.chernarusplus/ScriptedMods/DayZSurvival.c " LINE 352 That function is a randomizer. 
 ##### This might be helpful --> SpawnGunIn( PlayerBase player, string ClassName, bool isPrimary, TstringArray Attachments, TstringArray Extras) 
 ##### NOTE:  Set bool isPrimary to 'true' if you wish to make the weapon a primary
 
 ## - No Stamina
-##### in ModSettings use m_NoStamina to enable/disable stamina
+##### in Tunables.c use m_NoStamina to enable/disable stamina
 
 ## - No Hunger
-##### in ModSettings use m_NoHunger to enable/disable hunger
+##### in Tunables.c use m_NoHunger to enable/disable hunger
 
 ## - No Thirst
-##### in ModSettings use m_NoThirst to enable/disable thirst
+##### in Tunables.c use m_NoThirst to enable/disable thirst
 
 ## - Debug Monitor
-##### in ModSettings use m_debugmonitor to enable/disable debug monitor
+##### in Tunables.c use m_debugmonitor to enable/disable debug monitor
 
 ## - Airdrops
-##### in ModSettings use EnableAirdrops to enable/disable airdrops
-##### in ModSettings use SpawnZombie to enable/disable zombies at airdrops
-##### in ModSettings use ShowSignal to enable/disable smoke at airdrops
-##### in ModSettings use EnableAirdrops to enable/disable random airdrops on the map
+##### in Tunables.c use EnableAirdrops to enable/disable airdrops
+##### in Tunables.c use SpawnZombie to enable/disable zombies at airdrops
+##### in Tunables.c use ShowSignal to enable/disable smoke at airdrops
+##### in Tunables.c use EnableAirdrops to enable/disable random airdrops on the map
 
 ## - Zombie Hordes
-##### in ModSettings use m_ZedHordes to enable/disable random zombie hordes
+##### in Tunables.c use m_ZedHordes to enable/disable random zombie hordes
 ##### you can edit the hordes changing DayZSurvival.chernarusplus\ScriptedMods\InfectedHordes.c
 
 ## - Custom SafeZone with godmode.
@@ -70,7 +65,7 @@
 ## - Kill messages
 ##### Shows who killed who, committed suicide.
 
-## - Custom MOTD based within the mission
+## - Custom MOTD based within the mission (NOT CURRENTLY WORKING)
 ##### Random preset messages popup for all players. To change the messages check the file " mpmissions/DayZSurvival.chernarusplus/ScriptedMods/MOTDMessages.c "
 
 ### USEFUL THINGS:
@@ -80,7 +75,7 @@
 ## Script/Addon Credits
 Below is a list of scripts/codebases/githubs/etc used to make this repack, credits are added if available for each script repack
 
-### Original Custom Mission (and base for repack)
+### Original Custom Mission and admin tools (and base for repack)
 ##### Created: DaOne
 ##### Twitter: @DuhOneZ
 ##### YouTube: https://www.youtube.com/channel/UCfTYjQEiTvJcUz-HAtg8rUQ
@@ -118,6 +113,7 @@ Below is a list of scripts/codebases/githubs/etc used to make this repack, credi
 ##### Opendayz: https://opendayz.net/members/johnny-bravo.21601/
 
 ## Known Issues:
+-MOTD isnt working
 -New Loadout feature does not attach secondary weapon attachmnets (pistol/weapon that is placed within an inventory container).
 -SafeZone Godmode is not really godmode thats because the damage fucntions are hard-codded into the game engine.
 
