@@ -15,7 +15,7 @@ class ModTunables extends ModuleManager
 	protected bool m_Debugmode 		   	= false; //Set true to disable db for faster server loading and for testing purposes
 	protected bool m_ProxyExportMode  	= false; //Set to ture to export a new loot positions xml (export can be found in your Storage folder).
 	protected bool m_StaminaStatus   	= true;  //set to true to disable Stamina
-	protected bool m_HealthStatus    	= false;  //set to true to disable Health
+	protected bool m_HungerStatus    	= false;  //set to true to disable Health
 	protected bool m_ThirstStatus    	= false;  //set to true to disable Thirst
 	protected bool m_CustomBuildings  	= true;  //Spawns the buildings you add in file BuildingSpawner.c
 	protected bool m_SessionFeed	  	= true;  //Set to true to enable Disconnect/Connect Messages
@@ -57,8 +57,8 @@ class ModTunables extends ModuleManager
 			return m_StaminaStatus;
 			break;
 			
-			case "HealthStatus":
-			return m_HealthStatus;
+			case "HungerStatus":
+			return m_HungerStatus;
 			break;
 			
 			case "ThirstStatus":

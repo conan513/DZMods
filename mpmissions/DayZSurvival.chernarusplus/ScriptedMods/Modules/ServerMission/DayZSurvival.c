@@ -15,7 +15,7 @@ class DayZSurvival : MissionServer
 	protected float m_LogInTimerLength = 1;     //in seconds the spawn timer when players login!
 	bool m_StaminaStatus = false;
 	//sheep
-	bool m_HealthStatus = false;
+	bool m_HungerStatus = false;
 	bool m_ThirstStatus = false;
 	bool EnableAirdrops = false;
 	bool SpawnZombie = false;
@@ -119,9 +119,9 @@ class DayZSurvival : MissionServer
 		{
 			m_StaminaStatus = true; //Disable Stamina
 		}
-		if (ModTunables.Cast(GetModule(ModTunables)).IsActiveMisc("HealthStatus"))
+		if (ModTunables.Cast(GetModule(ModTunables)).IsActiveMisc("HungerStatus"))
 		{
-			m_HealthStatus = true; //Disable Health
+			m_HungerStatus = true; //Disable Hunger
 		}
 		if (ModTunables.Cast(GetModule(ModTunables)).IsActiveMisc("ThirstStatus"))
 		{
