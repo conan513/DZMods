@@ -143,6 +143,11 @@ class DayZSurvival : MissionServer
 		{
 			ShowSignal = true; //AirdropFlares
 		}
+		if (ModTunables.Cast(GetModule(ModTunables)).IsActiveMisc("AirdropFlare"))
+		{
+			m_Debugmonitor = true; //Debug monitor
+			loadDebug();
+		}
 		
 		//-----------
 		GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(this.PlayerCounter, 110000, true);  //Default 120000 2 mins Looped

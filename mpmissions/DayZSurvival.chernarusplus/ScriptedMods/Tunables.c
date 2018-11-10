@@ -11,6 +11,7 @@ class ModTunables extends ModuleManager
 	//============================
 
 	//==============Misc==========
+	protected bool m_Debugmonitor	   	= true; //Debug monitor enable/disable
 	protected bool m_Debugmode 		   	= false; //Set true to disable db for faster server loading and for testing purposes
 	protected bool m_ProxyExportMode  	= false; //Set to ture to export a new loot positions xml (export can be found in your Storage folder).
 	protected bool m_StaminaStatus   	= true;  //set to true to disable Stamina
@@ -42,6 +43,10 @@ class ModTunables extends ModuleManager
 		{
 			case "Debugmode":
 			return m_Debugmode;
+			break;
+			
+			case "Debugmomitor":
+			return m_Debugmonitor;
 			break;
 
 			case "ProxyExportMode":
