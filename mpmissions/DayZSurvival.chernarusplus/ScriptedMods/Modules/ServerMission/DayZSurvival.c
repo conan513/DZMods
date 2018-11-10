@@ -146,7 +146,7 @@ class DayZSurvival : MissionServer
 		if (ModTunables.Cast(GetModule(ModTunables)).IsActiveMisc("AirdropFlare"))
 		{
 			m_Debugmonitor = true; //Debug monitor
-			loadDebug();
+			GetGame().SetDebugMonitorEnabled(1);
 		}
 		
 		//-----------
