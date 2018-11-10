@@ -17,7 +17,11 @@ class DayZSurvival : MissionServer
 	//sheep
 	bool m_HealthStatus = false;
 	bool m_ThirstStatus = false;
-	bool EnableAirdrops = true;
+	bool EnableAirdrops = false;
+	bool SpawnZombie = false;
+	bool ShowSignal = false;
+	bool m_Debugmonitor = false;
+	
 	ref AirDrop AirDropClass;
 
 
