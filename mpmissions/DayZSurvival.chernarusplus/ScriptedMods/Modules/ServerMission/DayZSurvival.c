@@ -115,22 +115,18 @@ class DayZSurvival : MissionServer
 		{
 			m_StaminaStatus = true; //Disable Stamina
 		}
-		
 		if (ModTunables.Cast(GetModule(ModTunables)).IsActiveMisc("HealthStatus"))
 		{
 			m_HealthStatus = true; //Disable Health
 		}
-		
 		if (ModTunables.Cast(GetModule(ModTunables)).IsActiveMisc("ThirstStatus"))
 		{
 			m_ThirstStatus = true; //Disable Thirst
 		}
-		
 		if (ModTunables.Cast(GetModule(ModTunables)).IsActive("InfectedHordes"))
 		{
 			m_ZombieEvents = new InfectedHordes;
 		}
-		
 		if (ModTunables.Cast(GetModule(ModTunables)).IsActiveMisc("Airdrops"))
 		{
 			EnableAirdrops = true; //Airdrops
@@ -189,6 +185,13 @@ class DayZSurvival : MissionServer
 				currentPlayer.GetStaminaHandler().SyncStamina(1000,1000);
 				currentPlayer.GetStatStamina().Set(currentPlayer.GetStaminaHandler().GetStaminaCap());
 			}
+			if (m_HungerStatus) {
+				currentPlayer.GetStatEnergy().Set(20000);
+			}
+			if (m_ThirstStatus) {
+				currentPlayer.GetStatWater().Set(5000);
+			}
+			
 			if (GetModule(SafeZone)) { SafeZone.Cast(GetModule(SafeZone)).SafeZoneHandle(currentPlayer); }
 			m_currentPlayer++;
 		}
