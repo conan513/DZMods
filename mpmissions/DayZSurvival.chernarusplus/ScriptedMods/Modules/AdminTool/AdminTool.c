@@ -506,7 +506,6 @@ class AdminTool extends ModuleManager
 							carfluids.Fill( CarFluid.OIL, 1000 );
 							carfluids.Fill( CarFluid.BRAKE, 1000 );
 							carfluids.Fill( CarFluid.COOLANT, 1000 );
-							    break;
 							break;
 
 							default:
