@@ -24,8 +24,8 @@ class AirDrop
 	float TicksTimerFromStart = 600 / TimesliceMultiplyier; // How much time will pass from the server start to first airdrop
 	bool PrintInformationMessages = true; // Show in chat when airplane flew out and when airdrop is landed
 	bool PrintInformationCoordinates = true; // Show in chat coordinates where airdrop is landed
-	// 36000 Seconds = 1 Hour
-	float RemoveTime = 36000 / TimesliceMultiplyier; // After how much time airplane and loot will be removed and new airplane will be spawned
+	// 3600 Seconds = 1 Hour
+	float RemoveTime = 3600 / TimesliceMultiplyier; // After how much time airplane and loot will be removed and new airplane will be spawned
 	bool SpawnZombie; // Spawn zombie near airdrop when landed
 	bool ShowSignal; // Show smoke signal when airdrop landed
 	float RandomBoundsMin = 95; // Airdrop drop bounds min
@@ -77,6 +77,9 @@ class AirDrop
 	// Send message in global chat
 	void SendMessage(string message) 
 	{
+		GetGame().GetMission().OnEvent(ChatMessageEventTypeID, new ChatMessageEventParams(CCDirect, "", message, ""));
+		
+		/*
 		ref array<Man> players = new array<Man>; 
 		GetGame().GetPlayers( players ); 
 		
@@ -88,6 +91,7 @@ class AirDrop
 			Param1<string> m_AirTimer = new Param1<string>(message); 
 			GetGame().RPCSingleParam(player1, ERPCs.RPC_USER_ACTION_MESSAGE, m_AirTimer, true, player1.GetIdentity()); 
 		}
+		*/
 	}
 	
 	// Teleport all players to position, debug
